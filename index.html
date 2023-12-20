@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Israr Machine Learning Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            max-width: 300px;
+            margin: auto;
+        }
+
+        label {
+            margin-bottom: 8px;
+        }
+
+        input {
+            padding: 8px;
+            margin-bottom: 16px;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;">Machine Learning Prediction</h1>
+    <form id="predictionForm">
+        <label for="sepalLength">Sepal Length:</label>
+        <input type="text" id="sepalLength" name="sepalLength" required>
+
+        <label for="sepalWidth">Sepal Width:</label>
+        <input type="text" id="sepalWidth" name="sepalWidth" required>
+
+        <label for="petalLength">Petal Length:</label>
+        <input type="text" id="petalLength" name="petalLength" required>
+
+        <label for="petalWidth">Petal Width:</label>
+        <input type="text" id="petalWidth" name="petalWidth" required>
+
+        <button type="button" onclick="predict()">Predict</button>
+    </form>
+
+    <div id="result" style="margin-left: 700px;"></div>
+
+    <script>
+        function predict() {
+            // Get input values
+            var sepalLength = document.getElementById('sepalLength').value;
+            var sepalWidth = document.getElementById('sepalWidth').value;
+            var petalLength = document.getElementById('petalLength').value;
+            var petalWidth = document.getElementById('petalWidth').value;
+
+            // Prepare data for POST request
+            var data = {
+                "features": [parseFloat(sepalLength), parseFloat(sepalWidth), parseFloat(petalLength), parseFloat(petalWidth)]
+            };
+
+            // Make POST request to Flask app
+            fetch('http://localhost:5000/predict', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(result => {
+                // Display the prediction result
+                document.getElementById('result').innerText = 'Prediction: ' + result.prediction;
+            })
+            .catch(error => console.error('Error:', error));
+        }
+    </script>
+</body>
+</html>
