@@ -1,4 +1,4 @@
-## Picture of Flask Application showing predicting accurately 
+## Picture of flask application running accurately 
 
 ![Working Flask Application](https://github.com/Israr-11/AI-application-using-flask-and-scikit-learn/assets/91403838/6acaae0b-b47c-4825-9a5b-729d72ed16c6)
 
