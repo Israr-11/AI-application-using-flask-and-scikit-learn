@@ -10,6 +10,14 @@ from model import model
 app = Flask(__name__)
 CORS(app)  # Enable CORS for all routes
 
+# Mapping class labels to flower names
+flower_names = {
+    0: "Setosa",
+    1: "Versicolor",
+    2: "Virginica"
+}
+
+
 
 @app.route('/predict', methods=['POST'])
 def predict():
@@ -35,7 +43,11 @@ def predict():
         # Return the result as JSON
         #Return the prediction result as a JSON response.
 
-        result = {'prediction': int(prediction)}
+                # Map class label to flower name
+        flower_name = flower_names.get(int(prediction), "Unknown")
+
+        result = {'prediction': int(prediction), 'flower_name': flower_name}
+
         return jsonify(result)
 
     except Exception as e:
