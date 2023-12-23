@@ -7,7 +7,9 @@
 ## Step 1: Install python dependencies in the flask application
 
 pip install Flask 
+
 pip install scikit-learn
+
 pip install flask-cors
 
 ## Step 2: Start the backend server
