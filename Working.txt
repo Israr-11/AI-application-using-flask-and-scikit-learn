@@ -1,9 +1,9 @@
 In the context of a machine learning model, "features" typically refer to the input variables or 
-attributes that the model uses to make predictions. In your example, the "features" array is:
+attributes that the model uses to make predictions. In your example, the "features" array is
 
 
 "features": [5.1, 3.5, 1.4, 0.2]
-Here, each of the number in the array represents a specific feature. Based on the values you provided, 
+Here, each of the number in the array represents a specific feature. Based on your values, 
 these could be measurements related to an iris flower, which is a common scenario 
 when working with the Iris dataset. Specifically, these values could represent the sepal length, 
 sepal width, petal length, and petal width of a flower, respectively.
